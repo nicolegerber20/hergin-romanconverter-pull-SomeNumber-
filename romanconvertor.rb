@@ -58,6 +58,39 @@ end
 
 def toRoman(arabicNumber)
     # Replace the following line with the actual code!
-    
+    def toRoman(arabicNumber)
+    class String
+        private
+        ROMAN_MAPPING = 
+          { :M => 1000, :CM => 900, :D => 500, :CD => 400,
+            :C => 100, :XC => 90, :L => 50, :XL => 40, :X => 10,
+            :IX => 9, :V => 5, :IV => 4, :I => 1 }.freeze
+      
+        public
+      
+        def arabicNumber()
+          return 0 if empty?
+      
+          str = self
+          result = 0
+          while !str.empty?
+            roman = str[0..1]
+            value = arabicNumber[roman.to_sym]
+            if !value.nil?
+              result += value
+              str = str[roman.length, str.length]
+              next
+            elsif roman.length == 2
+              roman = str[0]
+              value = arabicNumber[roman.to_sym]
+              if !value.nil?
+                result += value
+                str = str[roman.length..-1]
+                next
+              end
+            end
+          result
+          end
+        end
     raise NotImplementedError
 end
